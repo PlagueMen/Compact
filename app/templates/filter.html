@@ -1,0 +1,69 @@
+<!-- Фильтр товаров -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title text-center">Фильтр</h2>
+    </div>
+    <div class="panel-body">
+        <div class="container">
+            <form method="post">
+                <div class="input-group">
+                    <div class="radio">
+                        <label> <input type="radio" name="exist" value="exist" {% if filter.exist %}checked{% endif %}>Товар
+                            в наличии
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label> <input type="radio" name="exist" value="exist_a"
+                                       {% if filter.exist_a %}checked{% endif %}>В
+                            Алексеевке
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label> <input type="radio" name="exist" value="exist_b"
+                                       {% if filter.exist_b %}checked{% endif %}>В
+                            Бирюче
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label> <input type="radio" name="exist" value="exist_k"
+                                       {% if filter.exist_k %}checked{% endif %}>В
+                            Красном
+                        </label>
+                    </div>
+                    <div class="radio">
+                        <label> <input type="radio" name="exist" value="exist_all"
+                                       {% if filter.exist_all %}checked{% endif %}>В наличии и под заказ
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>Цена от</label> <input type="number" class="form-control"
+                                                      name="price_low"
+                                                      value="{% if filter.low!=0 %}{{ filter.low }}{% endif %}">
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Цена до</label> <input type="number" class="form-control"
+                                                      name="price_high"
+                                                      value="{% if filter.high!=999999 %}{{ filter.high }}{% endif %}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><abbr
+                            title="Например если ввести '1155', то в списке останутся только те товары в наименовании которых есть эти цифры">В
+                        наименовании есть текст:</abbr></label> <input type="text" class="form-control"
+                                                                       name="filter"
+                                                                       value="{{ filter.filter }}">
+                </div>
+                <div class="form-group col-md-offset-2">
+                    <button type="submit" class="btn btn-primary">Применить
+                        фильтр
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

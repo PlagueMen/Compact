@@ -1,0 +1,37 @@
+{% extends "index.html" %} {% set active_page = "login" %} {% block
+content %}
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <span class="text-warning">Внимание: Система регистрации
+	пользователей проходит тестирование и недоступна для использования</span>
+
+    <div class="row">
+        <div class="col-md-6">
+            <form role="form" action="login" method="post">
+                <div class="form-group">
+                    <label>Адрес электронной почты</label><input type="email" required
+                                                                 class="form-control" name="email"
+                                                                 placeholder="Адрес электронной почты">
+                    {% if email_error %}
+                        <div class="alert alert-danger">{{ email_error }}</div>
+                    {% endif %}
+                </div>
+                <div class="form-group">
+                    <label>Пароль</label> <input type="password" required
+                                                 class="form-control" name="password" placeholder="Пароль">
+                    {% if password_error %}
+                        <div class="alert alert-danger">{{ password_error }}</div>
+                    {% endif %}
+                </div>
+                <div class="checkbox">
+                    <label> <input type="checkbox" name="remember_me">Запомнить
+                        меня
+                    </label>
+                </div>
+                <div class="form-group">
+                    <a class="btn btn-primary" href="register">Регистрация</a>
+                </div>
+                <button type="submit" class="btn btn-primary">Войти</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

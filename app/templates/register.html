@@ -1,0 +1,149 @@
+{% extends "index.html" %} {% set active_page = "login" %} {% block
+content %}
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <span class="text-warning">Внимание: Система регистрации
+	пользователей проходит тестирование и недоступна для использования</span>
+    <div class="row">
+        <div class="col-md-8">
+            <form class="form-horizontal" role="form" action="register"
+                  method="post">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4 class="text-info">Заполните для регистрации</h4>
+
+                        <div class="form-group">
+                            <label class="col-md-4" for="email">Адрес электронной
+                                почты<abbr class="text-danger"
+                                           title="Поле обязательное для заполнения">*</abbr>
+                            </label>
+
+                            <div class="col-md-8">
+                                <input type="email" required class="form-control" name="email"
+                                       placeholder="Адрес электронной почты"
+                                       value="{% if user.email %}{{ user.email }}
+								{% endif %}">
+                                <label class="text-danger">{% if email_error %}{{ email_error }} {% endif %}</label>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4" for="password">Пароль<abbr
+                                    class="text-danger" title="Поле обязательное для заполнения">*</abbr></label>
+
+                            <div class="col-md-8">
+                                <input type="password" required class="form-control"
+                                       name="password" placeholder="Пароль"> <label
+                                    class="text-danger">{% if password_error %}{{ password_error }} {% endif %}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4 class="text-info">Для того чтобы мы знали как к Вам
+                            обратитьтся</h4>
+
+                        <div class="form-group">
+                            <label class="col-md-4" for="name">Имя<abbr
+                                    class="text-danger" title="Поле обязательное для заполнения">*</abbr></label>
+
+                            <div class="col-md-8">
+                                <input type="text" required class="form-control" name="name"
+                                       placeholder="Имя"
+                                       value="{% if user.name %}{{ user.name }}
+								{% endif %}">
+                                <label class="text-danger">{% if name_error %}{{ name_error }} {% endif %}</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4" for="second_name">Фамилия<abbr
+                                    class="text-danger" title="Поле обязательное для заполнения">*</abbr></label>
+
+                            <div class="col-md-8">
+                                <input type="text" required class="form-control"
+                                       name="second_name" placeholder="Фамилия"
+                                       value="{% if user.second_name %}{{ user.second_name }}
+								{% endif %}">
+                                <label class="text-danger">
+                                    {% if second_name_error %}{{ second_name_error }} {% endif %}</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4" for="last_name">Отчество</label>
+
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" name="last_name"
+                                       placeholder="Отчество"
+                                       value="{% if user.last_name %}{{ user.last_name }}
+								{% endif %}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4 class="text-info">Для сообщения о статусе заказа, скидок и
+                            подарков</h4>
+
+                        <div class="form-group">
+                            <label class="col-md-4" for="phone">Мобильный телефон</label>
+
+                            <div class="input-group col-md-8">
+                                <span class="input-group-addon">+7</span> <input type="number"
+                                                                                 class="form-control" name="phone"
+                                                                                 placeholder="9XXXXXXXXX"
+                                                                                 value="
+
+
+
+
+
+
+
+                                                                                         {% if user.phone %}{{ user.phone }}
+								{% endif %}">
+                                <label class="text-danger">{% if phone_error %}{{ phone_error }} {% endif %}</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-4" for="discont"><abbr
+                                    title="Дисконтную карту Вы можете приобрести в магазине Компакт">Дисконтная
+                                карта</abbr></label>
+
+                            <div class="col-md-8">
+                                <input type="number" class="form-control" name="discont"
+                                       placeholder="Номер карты"
+                                       value="{% if user.discont %}{{ user.discont }}
+								{% endif %}">
+                                <label class="text-danger">{% if discont_error %}{{ discont_error }} {% endif %}</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h4 class="text-info">Условия регистрации</h4>
+                        Настоящим я даю согласие ООО «Компакт» и его уполномоченным
+                        представителям на обработку персональных данных, в том числе на их
+                        получение, сбор, хранение, включая трансграничную передачу,
+                        использование моих персональных данных: фамилии, имени, отчества,
+                        мобильного телефона, адреса электронной почты в целях заключения и
+                        исполнения договоров, а также согласие на информирование меня, в
+                        том числе на получение сообщений рекламного характера на номер
+                        оператора мобильной связи и адрес электронной почты, без
+                        ограничения срока действия. Согласие может в любой момент быть мною
+                        отозвано путем направления письменного уведомления.
+                        <div class="checkbox">
+                            <label> <input type="checkbox" name="accept">Подтвердить
+                                согласие
+                            </label>
+                        </div>
+                        <label class="text-danger">{% if accept_error %}{{ accept_error }} {% endif %}</label>
+                        <button type="submit" class="btn btn-primary col-md-offset-1">Регистрация</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% set active_page = "catalog" %}
+{% block content %}
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    {% if products %}
+        {% if count and count>49 %}
+            <h4 class="text-warning hidden-print">По Вашему запросу найдено {{ count }} товаров, отображены первые 50,
+                уточните запрос</h4>
+        {% endif %}
+        <div class="row">
+            {% include "productlist.html" %}
+        </div>
+    {% else %}
+        <h4 class="text-danger">По вашему запросу товаров не найдено</h4>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "index.html" %} {% set active_page = "news" %} {% block
+content %}
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    {% for new in news %}
+        <div class="jumbotron">
+            <div class="container">
+                <h2>{{ new.title }}</h2>
+
+                <p>{{ new.description|safe }}</p>
+                <a class="btn btn-primary btn-primary" href="/news-{{ new.id }}">Подробнее...</a>
+            </div>
+        </div>
+    {% endfor %} {% endblock %}

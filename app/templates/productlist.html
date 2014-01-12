@@ -1,0 +1,46 @@
+<div class="visible-print">Прайс-лист Компакт от {{ g.date }}</div>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title text-center">{{ category_title }}</h2>
+    </div>
+    <div class="panel-body col-lg-12">
+        {% if products|length == 0 %}
+            <h4 class="text-danger">Товаров из этой категории на складе
+                нет, воспользуйтесь фильтром чтобы отобразить список товаров
+                доступных для заказа</h4>
+        {% else %}
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover table-condensed sortable">
+                    <thead>
+                    <tr>
+                        <th class="text-center">Код товара</th>
+                        <th class="text-center">Название</th>
+                        <th class="text-center">Артикул</th>
+                        <th class="text-center">Цена, руб.</th>
+                        <th class="text-center">Наличие</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <td class="text-right">{{ product.id }}</td>
+                            <td>{% if product.link %}<a href="{{ product.link|safe }}" target="_blank">
+                                {{ product.name }}</a> {% else %}{{ product.name }}{% endif %}
+                            </td>
+
+                            <td>{{ product.art }}</td>
+                            <td class="text-right">{{ product.price|format_currency }}</td>
+                            <td class="text-center"><abbr class="hidden-print"
+                                                          title="А - Алексеевка, Б - Бирюч, К - Красное">
+                                {{ product.exist }}</abbr>
+                                <b class="visible-print">{{ product.exist }}</b></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+    </div>
+    <!-- panel-body -->
+</div>
+<script src="static/js/tablesort.min.js"></script>

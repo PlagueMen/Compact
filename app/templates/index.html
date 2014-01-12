@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<html>
+<head>
+    <title>Сайт магазина Компакт</title>
+    <link rel="icon" type="image/ico" href="static/img/favicon.png"/>
+    <link href="static/css/bootstrap.min.css" rel="stylesheet">
+    <link href="static/css/index.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse"
+                        data-target=".navbar-ex1-collapse">
+                    <span class="icon-bar"></span> <span class="icon-bar"></span> <span
+                        class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Комп@кт</a>
+                <!-- 					<a href="/"><img src="static/img/logo.png" width="135" /></a> <a
+                    href="http://www.eandc-info.ru/" target="_blank"> <img
+                    src="static/img/EandC_logo.png" width="100"
+                    style="margin-top: 15px" /></a> -->
+            </div>
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                {% set navigation_bar = [ ('/news', 'news',
+					'Новости'),('/partners', 'partners',
+					'Наши партнеры'),('/contacts', 'contacts', 'Контакты'), ('/about',
+					'about', 'О нас'), ('/catalog', 'catalog', 'Каталог товаров') ] -%}
+                {% set active_page = active_page|default('index') -%} ...
+                <ul class="nav navbar-nav">
+                    {% for href, id, caption in navigation_bar %}
+                        <li {% if id== active_page %} class="active"{% endif %}><a
+                                href="{{ href|e }}">{{ caption|e }}</a></li> {% endfor %}
+                </ul>
+
+                <form class="navbar-form navbar-left" role="search" action="search"
+                      method="post">
+                    <div class="form-group">
+                        <input type="search" class="form-control" name="search"
+                               placeholder="Поиск по сайту..." value="{% if search %}{{ search }}{% endif %}">
+                    </div>
+                    <button type="submit" class="btn btn-default">
+                        <i class="glyphicon glyphicon-search"></i>
+                    </button>
+                    <a href="http://www.eandc-info.ru/" target="_blank"> <img
+                            src="static/img/EandC_logo.png" width="85"/></a>
+                </form>
+                <ul class="nav navbar-nav navbar-right" role="navigation">
+                    <li {% if active_page== "login" %} class="active"{% endif %}>{% include "user_menu.html" %}</li>
+                </ul>
+            </div>
+        </div>
+        <!-- container -->
+    </div>
+    <!-- navbar -->
+    {% include "flash.html" %} {% block content %}{% endblock %}
+</div>
+<script type='text/javascript' src="static/js/jquery.min.js"></script>
+<script type='text/javascript' src="static/js/bootstrap.min.js"></script>
+</body>
+</html>

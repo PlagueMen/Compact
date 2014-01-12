@@ -1,0 +1,16 @@
+{% extends "index.html" %} {% set active_page = "partners" %} {% block content %}
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <div class="container">
+        <div class="row">
+            {% for partner in partners %}
+                <div class="col-lg-4 text-center">
+                    <div class="panel panel-primary">
+                        <div class="panel-body">
+                            <a href="/partner-{{ partner.id }}"> {{ partner.logo|safe }}</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

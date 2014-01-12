@@ -1,0 +1,46 @@
+<!-- Вывод всех категорий-->
+{% extends "index.html" %}
+{% set active_page = "catalog" %}
+{% block content %}
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <p><a class="btn btn-primary btn-primary" href="price_list">Скачать прайс-лист целиком</a></p>
+    <div class="row">
+        {% for grmater in categories %}
+            <div class="col-md-6">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h2 class="panel-title">{{ grmater.name }}</h2>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel-group" id="{{ grmater.id }}">
+                            {% for sgrmat in grmater.children %}
+                                <div class="panel panel-info">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">
+                                            <a class="accordion-toggle" data-toggle="collapse"
+                                               data-parent="#{{ grmater.id }}" href="#{{ sgrmat.id }}">
+                                                {{ sgrmat.name }}</a>
+                                        </h3>
+                                    </div>
+                                    <div id="{{ sgrmat.id }}" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div class="list-group">
+                                                {% for tobe in sgrmat.children %}
+                                                    <a class="list-group-item"
+                                                       href="category-{{ tobe.id }}">{{ tobe.name }} <span
+                                                            class="badge pull-right">{{ tobe.existed_products }}</span></a>
+                                                {% endfor %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <!-- panel-group -->
+                    </div>
+                    <!-- panel -->
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

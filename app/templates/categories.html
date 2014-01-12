@@ -1,0 +1,23 @@
+<!-- Вывод категорий в виде дерева-->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h2 class="panel-title text-center">Каталог товаров</h2>
+    </div>
+    <div class="panel-body">
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu"
+            style="display: block; position: relative;">
+
+            {% for category in categories recursive %} {% if category.children %}
+                <li class="dropdown-submenu"><a href="#">{{ category.name }}</a>
+                    {% else %}
+                <li><a tabindex="-1" href="/category-{{ category.id }}">{{ category.name }}</a></li>
+            {% endif %} {% if category.children %}
+                <ul class="dropdown-menu">{{ loop(category.children) }}
+                </ul>
+            {% endif %} {% endfor %}
+            <li class="divider"></li>
+            <li><a href="price_list">Скачать прайс-лист</a></li>
+        </ul>
+    </div>
+</div>

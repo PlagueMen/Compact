@@ -1,0 +1,42 @@
+{% extends "index.html" %} {% set active_page = "contacts" %} {% block
+content %}
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1 class="panel-title">Контакты</h1>
+        </div>
+        <div class="panel-body">
+            <ul id="myTab" class="nav nav-tabs">
+                <li class="active"><a href="#a" data-toggle="tab">Алексеевка</a></li>
+                <li class=""><a href="#b" data-toggle="tab">Бирюч</a></li>
+                <li class=""><a href="#k" data-toggle="tab">Красное</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="a">
+                    <br/> Адрес: Белгородская обл., г. Алексеевка, пл. Победы, д. 11 <br/>
+                    Телефоны/факсы: (47234) 4-62-02 (многоканальный) <br/> E-mail: <a
+                        href="mailto:compact@cmpt.ru">compact@cmpt.ru</a> <br/> Сайт: <a
+                        href="http://компакт.рф">http://компакт.рф</a> <br/>Схема
+                    проезда: <br/> <a href="http://maps.yandex.ru/-/CVVSMKYy"> <img
+                        alt="Схема проезда" src="static/img/shema_alekseevka.png">
+                </a>
+                </div>
+                <div class="tab-pane fade" id="b">
+                    <br/> Адрес: Белгородская обл., г. Бирюч
+                    <h4>Магазин</h4>
+                    ул. Маркина д. 3, третий этаж <br/> Телефон:(980) 329-49-99
+                    <h4>Сервисный центр</h4>
+                    пл. Соборная, д. 7, второй этаж <br/> Телефон:(980) 329-48-88 <br/>
+                    E-mail: <a href="mailto:biruch@cmpt.ru">biruch@cmpt.ru</a> <br/>Схема
+                    проезда: <br/> <a href="http://maps.yandex.ru/-/CVV0vB5h"> <img
+                        alt="Схема проезда" src="static/img/shema_biruch.png">
+                </a></a>
+                </div>
+                <div class="tab-pane fade" id="k">
+                    <br/> Адрес: Белгородская обл., с. Красное, ул. Октябрьская д. 86<br/>
+                    Телефон: (904) 090-07-70)<br/> E-mail: <br/>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
